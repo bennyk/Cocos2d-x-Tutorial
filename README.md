@@ -1,6 +1,8 @@
 # Cocos2d-x-Tutorial
 
-This repo hosts my tutorial source based on the newer cocos2d-x v3 framework. 
+This repo hosts my tutorial source based on the newer cocos2d-x v3 framework (see References below for related docs about this tutorial).
+
+Following are the instructions required to build these tutorial samples: -
 
 1. Clone the project repo and start downloading the project submodules' dependencies.
 ```sh
@@ -11,8 +13,22 @@ $ git submodule update
 $ cd cocos2d-x
 $ python download-deps.py
 ```
-2. Launch Xcode or Android-Studio to load the tutorial project source. In Xcode, locate any *.xcodeproj* file in *proj.ios_mac* folder to load the project.
-In Android-Studio, select "choose existing project" to locate any folder with *proj.android-studio*.
+
+### XCode
+
+1. Launch Xcode to load the tutorial project source. In Xcode, locate any *.xcodeproj* file in *proj.ios_mac* folder to load the project. Cmd-B to build it.
+
+### Android-Studio 
+
+1. Issue the "cocos compile" command line to build the tutorial project.
+
+```sh
+$ cd proj.android-studio
+$ cocos compile -p android --android-studio 
+```
+2. Launch Android-Studio, select "choose existing project" to locate any folder with *proj.android-studio*.
+
+For a video about these steps see https://www.youtube.com/watch?v=gdOkbXYsf04 
 
 That's all.
 
