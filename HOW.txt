@@ -1,0 +1,4 @@
+
+cocos compile -p android --android-studio
+
+cocos new -l cpp -d . TextureRender
