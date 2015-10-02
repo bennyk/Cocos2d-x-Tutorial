@@ -1,5 +1,7 @@
 #include "HelloWorldScene.h"
 
+NS_APP_BEGIN
+
 USING_NS_CC;
 
 Scene* HelloWorld::createScene()
@@ -279,26 +281,29 @@ void HelloWorld::genBackground()
     }
     
     Color4F bgColor = this->randomBrightColor();
+    _background = this->spriteWithColor(bgColor, 512, 512);
+    
     Size winSize = Director::getInstance()->getWinSize();
-//    _background = this->spriteWithColor(bgColor, winSize.width, winSize.height);
-    
-    Color4F color2 = this->randomBrightColor();
-    
-    int nStripes = ((arc4random() % 4) + 1) * 2;
-    _background = this->spriteWithColor1(bgColor, color2, 512, 512, nStripes);
-    this->setScale(.5);
-    
     _background->setPosition(Vec2(winSize.width/2, winSize.height/2));
-
+    
     _background->getTexture()->setTexParameters(Texture2D::TexParams {GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_REPEAT});
     this->addChild(_background, -1);
     
-//    _background->addChild(_background);
+    
+    Color4F color3 = this->randomBrightColor();
+    Color4F color4 = this->randomBrightColor();
+    
+    auto stripes = this->spriteWithColor1(color3, color4, 512, 512, 4);
+    stripes->getTexture()->setTexParameters(Texture2D::TexParams {GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_CLAMP_TO_EDGE});
+    _terrain->setStripes(stripes);
 }
 
 void HelloWorld::onEnter()
 {
     Layer::onEnter();
+    
+    _terrain = app::Terrain::create();
+    this->addChild(_terrain, 1);
     
     this->genBackground();
 //    this->setTouchEnabled(true);
@@ -314,6 +319,8 @@ void HelloWorld::update(float delta)
     
     Size textureSize = _background->getTextureRect().size;
     _background->setTextureRect(Rect {offset, 0, textureSize.width, textureSize.height});
+    
+    _terrain->setOffsetX(offset);
 
 }
 
@@ -331,3 +338,5 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
     exit(0);
 #endif
 }
+
+NS_APP_END

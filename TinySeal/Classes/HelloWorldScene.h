@@ -2,6 +2,9 @@
 #define __HELLOWORLD_SCENE_H__
 
 #include "cocos2d.h"
+#include "Terrain.h"
+
+NS_APP_BEGIN
 
 using namespace cocos2d;
 
@@ -33,6 +36,10 @@ private:
     
     Sprite *_background;
     CustomCommand _customCommand;
+    
+    app::Terrain *_terrain;
 };
+
+NS_APP_END
 
 #endif // __HELLOWORLD_SCENE_H__

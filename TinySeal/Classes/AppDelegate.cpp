@@ -2,6 +2,7 @@
 #include "HelloWorldScene.h"
 
 USING_NS_CC;
+USING_NS_APP;
 
 static cocos2d::Size designResolutionSize = cocos2d::Size(568, 320);
 static cocos2d::Size smallResolutionSize = cocos2d::Size(480, 320);
