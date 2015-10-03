@@ -214,12 +214,7 @@ void Terrain::setOffsetX(float newOffsetX)
 
 void Terrain::resetPhysics()
 {
-    Vec2 p0 = _hillKeyPoints[0];
-    Vec2 p1 = _hillKeyPoints[kMaxHillKeyPoints-1];
-    
-//    CCLOG("edge %f,%f -> %f,%f", p0.x, p0.y, p1.x, p1.y);
-    
-    auto body = PhysicsBody::createEdgeSegment(p0, p1);
+    auto body = PhysicsBody::createEdgeChain(_borderVertices, _nBorderVertices);
     auto edgeNode = Node::create();
     edgeNode->setPhysicsBody(body);
     
