@@ -42,6 +42,7 @@ public:
 private:
     void generateHills();
     void resetHillVertices();
+    void resetPhysics();
     
 private:
     int _offsetX;

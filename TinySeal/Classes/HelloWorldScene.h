@@ -28,6 +28,7 @@ public:
 private:
     Sprite *spriteWithColor(Color4F color, float texWidth, float texHeight);
     Sprite *spriteWithColor1(Color4F color1, Color4F color2, float texWidth, float texHeight, int nStripes);
+    void createTestBodyAtPostition(Vec2 position);
     
     Color4F randomBrightColor();
     void genBackground();

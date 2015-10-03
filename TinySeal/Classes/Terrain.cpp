@@ -149,7 +149,9 @@ void Terrain::resetHillVertices()
         }
         
         prevFromKeyPointI = _fromKeyPointI;
-        prevToKeyPointI = _toKeyPointI;        
+        prevToKeyPointI = _toKeyPointI;
+        
+        this->resetPhysics();
     }
 
 }
@@ -208,6 +210,20 @@ void Terrain::setOffsetX(float newOffsetX)
     _offsetX = newOffsetX;
     this->setPosition(-_offsetX* this->getScale(), 0);
     this->resetHillVertices();
+}
+
+void Terrain::resetPhysics()
+{
+    Vec2 p0 = _hillKeyPoints[0];
+    Vec2 p1 = _hillKeyPoints[kMaxHillKeyPoints-1];
+    
+//    CCLOG("edge %f,%f -> %f,%f", p0.x, p0.y, p1.x, p1.y);
+    
+    auto body = PhysicsBody::createEdgeSegment(p0, p1);
+    auto edgeNode = Node::create();
+    edgeNode->setPhysicsBody(body);
+    
+    this->addChild(edgeNode);
 }
 
 

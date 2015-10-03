@@ -7,7 +7,11 @@ USING_NS_CC;
 Scene* HelloWorld::createScene()
 {
     // 'scene' is an autorelease object
-    auto scene = Scene::create();
+    auto scene = Scene::createWithPhysics();
+    
+    auto world = scene->getPhysicsWorld();
+    world->setGravity(Vec2 {0, -7.0f});
+    world->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
     
     // 'layer' is an autorelease object
     auto layer = HelloWorld::create();
@@ -326,7 +330,10 @@ void HelloWorld::update(float delta)
 
 bool HelloWorld::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event)
 {
-    this->genBackground();
+//    this->genBackground();
+    
+    Vec2 location = touch->getLocation();
+    this->createTestBodyAtPostition(location);
     return true;
 }
 
@@ -337,6 +344,17 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     exit(0);
 #endif
+}
+
+void HelloWorld::createTestBodyAtPostition(Vec2 position)
+{
+    auto body = PhysicsBody::createCircle(25.0, PhysicsMaterial {1.0, 0.5, 0.2}); //float aDensity, float aRestitution, float aFriction
+    body->setDynamic(true);
+    
+    auto sprite = Sprite::create();
+    sprite->setPosition(position);
+    sprite->setPhysicsBody(body);
+    this->addChild(sprite);
 }
 
 NS_APP_END
