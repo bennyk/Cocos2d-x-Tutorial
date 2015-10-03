@@ -12,6 +12,7 @@
 #include "cocos2d.h"
 
 #define kMaxHillKeyPoints 1000
+#define kHillSegmentWidth 10
 
 NS_APP_BEGIN
 
@@ -36,6 +37,7 @@ public:
     
 private:
     void generateHills();
+    void resetHillVertices();
     
 private:
     int _offsetX;
@@ -43,6 +45,8 @@ private:
     Sprite *_stripes;
     
     CustomCommand _customCommand;
+    
+    int _fromKeyPointI, _toKeyPointI;
 };
     
 NS_APP_END

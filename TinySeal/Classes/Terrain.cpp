@@ -13,7 +13,8 @@ NS_APP_BEGIN
 
 using namespace cocos2d;
 
-Terrain::Terrain() {}
+Terrain::Terrain()
+: _offsetX {0}, _stripes {nullptr}, _fromKeyPointI {0}, _toKeyPointI {0} {}
 
 Terrain::~Terrain()
 {
@@ -41,6 +42,8 @@ bool Terrain::init()
 {
     DrawNode::init();
     this->generateHills();
+    this->resetHillVertices();
+    
     return true;
 }
 
@@ -83,12 +86,28 @@ void Terrain::generateHills()
     return;
 }
 
+void Terrain::resetHillVertices()
+{
+    Size winSize = Director::getInstance()->getWinSize();
+    
+    static int prevFromKeyPointI = -1;
+    static int prevToKeyPointI = -1;
+    
+    // key points interval for drawing
+    while (_hillKeyPoints[_fromKeyPointI+1].x < _offsetX-winSize.width/8/this->getScale()) {
+        _fromKeyPointI++;
+    }
+    while (_hillKeyPoints[_toKeyPointI].x < _offsetX+winSize.width*12/8/this->getScale()) {
+        _toKeyPointI++;
+    }
+}
+
 void Terrain::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, uint32_t flags)
 {
     DrawNode::clear();
     
-    for(int i = 1; i < kMaxHillKeyPoints; ++i) {
-        this->drawLine(_hillKeyPoints[i-1], _hillKeyPoints[i], Color4F {1.0, 1.0, 1.0, 1.0});
+    for(int i = MAX(_fromKeyPointI, 1); i <= _toKeyPointI; ++i) {
+        this->drawLine(_hillKeyPoints[i-1], _hillKeyPoints[i], Color4F {1.0, 0.0, 0.0, 1.0});
     }
     
     DrawNode::draw(renderer, transform, flags);
@@ -98,6 +117,7 @@ void Terrain::setOffsetX(float newOffsetX)
 {
     _offsetX = newOffsetX;
     this->setPosition(-_offsetX* this->getScale(), 0);
+    this->resetHillVertices();
 }
 
 
