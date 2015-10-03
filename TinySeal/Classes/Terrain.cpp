@@ -108,6 +108,25 @@ void Terrain::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, 
     
     for(int i = MAX(_fromKeyPointI, 1); i <= _toKeyPointI; ++i) {
         this->drawLine(_hillKeyPoints[i-1], _hillKeyPoints[i], Color4F {1.0, 0.0, 0.0, 1.0});
+        
+        Vec2 p0 = _hillKeyPoints[i-1];
+        Vec2 p1 = _hillKeyPoints[i];
+        int hSegments = floorf((p1.x-p0.x)/kHillSegmentWidth);
+        float dx = (p1.x - p0.x) / hSegments;
+        float da = M_PI / hSegments;
+        float ymid = (p0.y + p1.y) / 2;
+        float ampl = (p0.y - p1.y) / 2;
+        
+        Vec2 pt0, pt1;
+        pt0 = p0;
+        for (int j = 0; j < hSegments+1; ++j) {
+            
+            pt1.x = p0.x + j*dx;
+            pt1.y = ymid + ampl * cosf(da*j);
+            
+            this->drawLine(pt0, pt1, Color4F {1.0, 1.0, 1.0, 1.0});
+            pt0 = pt1;
+        }
     }
     
     DrawNode::draw(renderer, transform, flags);
