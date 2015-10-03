@@ -2,6 +2,11 @@
 #define __HELLOWORLD_SCENE_H__
 
 #include "cocos2d.h"
+#include "Terrain.h"
+
+NS_APP_BEGIN
+
+using namespace cocos2d;
 
 class HelloWorld : public cocos2d::Layer
 {
@@ -15,6 +20,26 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
+    
+    virtual void onEnter();
+    virtual void update(float delta);
+    bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event);
+    
+private:
+    Sprite *spriteWithColor(Color4F color, float texWidth, float texHeight);
+    Sprite *spriteWithColor1(Color4F color1, Color4F color2, float texWidth, float texHeight, int nStripes);
+    
+    Color4F randomBrightColor();
+    void genBackground();
+    
+private:
+    
+    Sprite *_background;
+    CustomCommand _customCommand;
+    
+    app::Terrain *_terrain;
 };
+
+NS_APP_END
 
 #endif // __HELLOWORLD_SCENE_H__

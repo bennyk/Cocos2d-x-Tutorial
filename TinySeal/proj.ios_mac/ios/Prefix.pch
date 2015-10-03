@@ -9,4 +9,10 @@
 
 #ifdef __cplusplus
 	#include "cocos2d.h"
+
+// macros for app namespace
+#define NS_APP_BEGIN namespace app {
+#define NS_APP_END }
+#define USING_NS_APP using namespace app
+
 #endif
