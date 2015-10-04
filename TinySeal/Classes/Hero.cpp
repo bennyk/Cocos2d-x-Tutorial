@@ -44,9 +44,10 @@ bool Hero::init()
 void Hero::createBody()
 {
     float radius = 16.0f;
-    auto body = PhysicsBody::createCircle(radius, PhysicsMaterial {1.0f / CC_CONTENT_SCALE_FACTOR(), 0, -0.2f});
+    auto body = PhysicsBody::createCircle(radius, PhysicsMaterial {1.0f / CC_CONTENT_SCALE_FACTOR(), 0, 0.2f});
     body->setLinearDamping(.1f);
     body->setRotationEnable(false);
+    body->setDynamic(true);
     this->setPhysicsBody(body);
     
     // set initial position
@@ -65,7 +66,7 @@ void Hero::wake()
 void Hero::dive()
 {
     auto body = this->getPhysicsBody();
-    body->applyImpulse(Vec2 {5, -50}, body->getPosition());
+    body->applyForce(Vec2 {5, -50});
 
 }
 
