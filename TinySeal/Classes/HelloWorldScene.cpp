@@ -313,13 +313,14 @@ void HelloWorld::onEnter()
 //    this->setTouchEnabled(true);
     
     this->scheduleUpdate();
+    
+    _hero = Hero::create();
+    _terrain->addChild(_hero);
 }
 
 void HelloWorld::update(float delta)
-{
-    float PIXELS_PER_SECOND = 100;
-    static float offset = 0;
-    offset += PIXELS_PER_SECOND * delta;
+{    
+    float offset = _hero->getPosition().x;
     
     Size textureSize = _background->getTextureRect().size;
     _background->setTextureRect(Rect {offset, 0, textureSize.width, textureSize.height});

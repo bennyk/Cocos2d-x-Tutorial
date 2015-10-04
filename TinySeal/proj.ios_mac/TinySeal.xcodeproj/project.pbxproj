@@ -11,6 +11,17 @@
 		1971EB361BBE89F000F663C6 /* Noise-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 1971EB331BBE89F000F663C6 /* Noise-hd.png */; settings = {ASSET_TAGS = (); }; };
 		1971EB371BBE89F000F663C6 /* Noise-iphone5hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 1971EB341BBE89F000F663C6 /* Noise-iphone5hd.png */; settings = {ASSET_TAGS = (); }; };
 		1971EB381BBE89F000F663C6 /* Noise.png in Resources */ = {isa = PBXBuildFile; fileRef = 1971EB351BBE89F000F663C6 /* Noise.png */; settings = {ASSET_TAGS = (); }; };
+		19DE3DEF1BC0C8C800F79E2E /* Hero.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19DE3DED1BC0C8C800F79E2E /* Hero.cpp */; settings = {ASSET_TAGS = (); }; };
+		19DE3DFD1BC0CA1C00F79E2E /* seal1.png in Resources */ = {isa = PBXBuildFile; fileRef = 19DE3DF11BC0CA1C00F79E2E /* seal1.png */; settings = {ASSET_TAGS = (); }; };
+		19DE3DFE1BC0CA1C00F79E2E /* seal2.png in Resources */ = {isa = PBXBuildFile; fileRef = 19DE3DF21BC0CA1C00F79E2E /* seal2.png */; settings = {ASSET_TAGS = (); }; };
+		19DE3DFF1BC0CA1C00F79E2E /* seal_downhill.png in Resources */ = {isa = PBXBuildFile; fileRef = 19DE3DF31BC0CA1C00F79E2E /* seal_downhill.png */; settings = {ASSET_TAGS = (); }; };
+		19DE3E001BC0CA1C00F79E2E /* seal_downhill.png in Resources */ = {isa = PBXBuildFile; fileRef = 19DE3DF41BC0CA1C00F79E2E /* seal_downhill.png */; settings = {ASSET_TAGS = (); }; };
+		19DE3E011BC0CA1C00F79E2E /* seal1.png in Resources */ = {isa = PBXBuildFile; fileRef = 19DE3DF51BC0CA1C00F79E2E /* seal1.png */; settings = {ASSET_TAGS = (); }; };
+		19DE3E021BC0CA1C00F79E2E /* seal2.png in Resources */ = {isa = PBXBuildFile; fileRef = 19DE3DF61BC0CA1C00F79E2E /* seal2.png */; settings = {ASSET_TAGS = (); }; };
+		19DE3E031BC0CA1C00F79E2E /* TinySeal.caf in Resources */ = {isa = PBXBuildFile; fileRef = 19DE3DF81BC0CA1C00F79E2E /* TinySeal.caf */; settings = {ASSET_TAGS = (); }; };
+		19DE3E041BC0CA1C00F79E2E /* TinySeal.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19DE3DFA1BC0CA1C00F79E2E /* TinySeal.plist */; settings = {ASSET_TAGS = (); }; };
+		19DE3E051BC0CA1C00F79E2E /* TinySeal.png in Resources */ = {isa = PBXBuildFile; fileRef = 19DE3DFB1BC0CA1C00F79E2E /* TinySeal.png */; settings = {ASSET_TAGS = (); }; };
+		19DE3E061BC0CA1C00F79E2E /* TinySeal.tps in Resources */ = {isa = PBXBuildFile; fileRef = 19DE3DFC1BC0CA1C00F79E2E /* TinySeal.tps */; settings = {ASSET_TAGS = (); }; };
 		1AC6FB21180E996B004C840B /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAF9180E9839004C840B /* libcocos2d Mac.a */; };
 		1AC6FB30180E99EB004C840B /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FB07180E9839004C840B /* libcocos2d iOS.a */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -112,6 +123,18 @@
 		1971EB331BBE89F000F663C6 /* Noise-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Noise-hd.png"; sourceTree = "<group>"; };
 		1971EB341BBE89F000F663C6 /* Noise-iphone5hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Noise-iphone5hd.png"; sourceTree = "<group>"; };
 		1971EB351BBE89F000F663C6 /* Noise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Noise.png; sourceTree = "<group>"; };
+		19DE3DED1BC0C8C800F79E2E /* Hero.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hero.cpp; sourceTree = "<group>"; };
+		19DE3DEE1BC0C8C800F79E2E /* Hero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hero.h; sourceTree = "<group>"; };
+		19DE3DF11BC0CA1C00F79E2E /* seal1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = seal1.png; sourceTree = "<group>"; };
+		19DE3DF21BC0CA1C00F79E2E /* seal2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = seal2.png; sourceTree = "<group>"; };
+		19DE3DF31BC0CA1C00F79E2E /* seal_downhill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = seal_downhill.png; sourceTree = "<group>"; };
+		19DE3DF41BC0CA1C00F79E2E /* seal_downhill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = seal_downhill.png; sourceTree = "<group>"; };
+		19DE3DF51BC0CA1C00F79E2E /* seal1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = seal1.png; sourceTree = "<group>"; };
+		19DE3DF61BC0CA1C00F79E2E /* seal2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = seal2.png; sourceTree = "<group>"; };
+		19DE3DF81BC0CA1C00F79E2E /* TinySeal.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TinySeal.caf; sourceTree = "<group>"; };
+		19DE3DFA1BC0CA1C00F79E2E /* TinySeal.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TinySeal.plist; sourceTree = "<group>"; };
+		19DE3DFB1BC0CA1C00F79E2E /* TinySeal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TinySeal.png; sourceTree = "<group>"; };
+		19DE3DFC1BC0CA1C00F79E2E /* TinySeal.tps */ = {isa = PBXFileReference; lastKnownFileType = file; path = TinySeal.tps; sourceTree = "<group>"; };
 		1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = ../cocos2d/build/cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
 		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -241,6 +264,33 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		19DE3DF01BC0CA1C00F79E2E /* Raw */ = {
+			isa = PBXGroup;
+			children = (
+				19DE3DF11BC0CA1C00F79E2E /* seal1.png */,
+				19DE3DF21BC0CA1C00F79E2E /* seal2.png */,
+				19DE3DF31BC0CA1C00F79E2E /* seal_downhill.png */,
+			);
+			path = Raw;
+			sourceTree = "<group>";
+		};
+		19DE3DF71BC0CA1C00F79E2E /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				19DE3DF81BC0CA1C00F79E2E /* TinySeal.caf */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		19DE3DF91BC0CA1C00F79E2E /* Sprite Sheets */ = {
+			isa = PBXGroup;
+			children = (
+				19DE3DFA1BC0CA1C00F79E2E /* TinySeal.plist */,
+				19DE3DFB1BC0CA1C00F79E2E /* TinySeal.png */,
+			);
+			path = "Sprite Sheets";
+			sourceTree = "<group>";
+		};
 		1AC6FAE6180E9839004C840B /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +343,13 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				19DE3DF01BC0CA1C00F79E2E /* Raw */,
+				19DE3DF41BC0CA1C00F79E2E /* seal_downhill.png */,
+				19DE3DF51BC0CA1C00F79E2E /* seal1.png */,
+				19DE3DF61BC0CA1C00F79E2E /* seal2.png */,
+				19DE3DF71BC0CA1C00F79E2E /* Sounds */,
+				19DE3DF91BC0CA1C00F79E2E /* Sprite Sheets */,
+				19DE3DFC1BC0CA1C00F79E2E /* TinySeal.tps */,
 				1971EB331BBE89F000F663C6 /* Noise-hd.png */,
 				1971EB341BBE89F000F663C6 /* Noise-iphone5hd.png */,
 				1971EB351BBE89F000F663C6 /* Noise.png */,
@@ -315,6 +372,8 @@
 				46880B8719C43A87006E1F66 /* HelloWorldScene.h */,
 				1914DEAC1BBE6B0F00DD29B0 /* Terrain.cpp */,
 				1914DEAD1BBE6B0F00DD29B0 /* Terrain.h */,
+				19DE3DED1BC0C8C800F79E2E /* Hero.cpp */,
+				19DE3DEE1BC0C8C800F79E2E /* Hero.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -468,23 +527,33 @@
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				46880B8119C43A67006E1F66 /* HelloWorld.png in Resources */,
+				19DE3E061BC0CA1C00F79E2E /* TinySeal.tps in Resources */,
 				46880B7D19C43A67006E1F66 /* CloseSelected.png in Resources */,
+				19DE3E041BC0CA1C00F79E2E /* TinySeal.plist in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
+				19DE3E031BC0CA1C00F79E2E /* TinySeal.caf in Resources */,
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
 				521A8EA919F11F5000D177D7 /* fonts in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
+				19DE3E051BC0CA1C00F79E2E /* TinySeal.png in Resources */,
+				19DE3DFF1BC0CA1C00F79E2E /* seal_downhill.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
+				19DE3E001BC0CA1C00F79E2E /* seal_downhill.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				3EACC98F19EE6D4300EB3C5E /* res in Resources */,
+				19DE3E021BC0CA1C00F79E2E /* seal2.png in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
+				19DE3DFE1BC0CA1C00F79E2E /* seal2.png in Resources */,
+				19DE3DFD1BC0CA1C00F79E2E /* seal1.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				1971EB381BBE89F000F663C6 /* Noise.png in Resources */,
 				1971EB371BBE89F000F663C6 /* Noise-iphone5hd.png in Resources */,
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
+				19DE3E011BC0CA1C00F79E2E /* seal1.png in Resources */,
 				46880B7B19C43A67006E1F66 /* CloseNormal.png in Resources */,
 				1971EB361BBE89F000F663C6 /* Noise-hd.png in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
@@ -514,6 +583,7 @@
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				19DE3DEF1BC0C8C800F79E2E /* Hero.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				1914DEAE1BBE6B0F00DD29B0 /* Terrain.cpp in Sources */,

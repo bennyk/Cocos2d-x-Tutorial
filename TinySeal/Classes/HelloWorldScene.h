@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 #include "Terrain.h"
+#include "Hero.h"
 
 NS_APP_BEGIN
 
@@ -38,7 +39,8 @@ private:
     Sprite *_background;
     CustomCommand _customCommand;
     
-    app::Terrain *_terrain;
+    Terrain *_terrain;
+    Hero *_hero;
 };
 
 NS_APP_END

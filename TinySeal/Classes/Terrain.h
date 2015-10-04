@@ -58,6 +58,8 @@ private:
     Vec2 _hillTexCoords[kMaxHillVertices];
     int _nBorderVertices;
     Vec2 _borderVertices[kMaxBorderVertices];
+    
+    SpriteBatchNode *_batchNode;
 };
     
 NS_APP_END

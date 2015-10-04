@@ -48,6 +48,10 @@ bool Terrain::init()
     this->generateHills();
     this->resetHillVertices();
     
+    // load TinySeal sprite sheet.
+    auto cache = SpriteFrameCache::getInstance();
+    cache->addSpriteFramesWithFile("TinySeal.plist", "TinySeal.png");
+    
     return true;
 }
 
@@ -207,8 +211,9 @@ void Terrain::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, 
 
 void Terrain::setOffsetX(float newOffsetX)
 {
+    Size winSize = Director::getInstance()->getWinSize();
     _offsetX = newOffsetX;
-    this->setPosition(-_offsetX* this->getScale(), 0);
+    this->setPosition(winSize.width/8 -_offsetX* this->getScale(), 0);
     this->resetHillVertices();
 }
 
