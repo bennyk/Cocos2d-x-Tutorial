@@ -84,6 +84,8 @@ bool HelloWorld::init()
     
     auto eventListener = EventListenerTouchOneByOne::create();
     eventListener->onTouchBegan = CC_CALLBACK_2(HelloWorld::onTouchBegan, this);
+    eventListener->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
+    eventListener->onTouchCancelled = CC_CALLBACK_2(HelloWorld::onTouchCancelled, this);
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(eventListener, this);
     
     return true;
@@ -319,7 +321,22 @@ void HelloWorld::onEnter()
 }
 
 void HelloWorld::update(float delta)
-{    
+{
+    if (_tapDown) {
+        if (!_hero->isAwake()) {
+            _hero->wake();
+            _tapDown = false;
+        } else {
+//            CCLOG("diving");
+            _hero->dive();
+        }
+    }
+    else {
+//        CCLOG("not diving");
+    }
+    
+    _hero->limitVelocity();
+
     float offset = _hero->getPosition().x;
     
     Size textureSize = _background->getTextureRect().size;
@@ -331,11 +348,23 @@ void HelloWorld::update(float delta)
 
 bool HelloWorld::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event)
 {
-//    this->genBackground();
+    _tapDown = true;
     
-    Vec2 location = touch->getLocation();
-    this->createTestBodyAtPostition(location);
+//    this->genBackground();
+//    Vec2 location = touch->getLocation();
+//    this->createTestBodyAtPostition(location);
+    
     return true;
+}
+
+void HelloWorld::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_event)
+{
+    _tapDown = false;
+}
+
+void HelloWorld::onTouchCancelled(cocos2d::Touch *touch, cocos2d::Event *unused_event)
+{
+    _tapDown = false;
 }
 
 void HelloWorld::menuCloseCallback(Ref* pSender)

@@ -17,11 +17,22 @@ NS_APP_BEGIN
 using namespace cocos2d;
 class Hero : public Sprite {
 public:
+    Hero();
+    
+public:
     static Hero* create();
     virtual bool init() override;
     
+    bool isAwake() { return _awake; }
+    void wake();
+    void dive();
+    void limitVelocity();
+    
 private:
     void createBody();
+    
+private:
+    bool _awake;
 };
 
 NS_APP_END

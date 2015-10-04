@@ -14,7 +14,7 @@ class HelloWorld : public cocos2d::Layer
 public:
     static cocos2d::Scene* createScene();
 
-    virtual bool init();
+    virtual bool init() override;
     
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);
@@ -22,9 +22,11 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
     
-    virtual void onEnter();
-    virtual void update(float delta);
-    bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event);
+    virtual void onEnter() override;
+    virtual void update(float delta) override;
+    virtual bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event) override;
+    virtual void onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_event) override;
+    virtual void onTouchCancelled(cocos2d::Touch *touch, cocos2d::Event *unused_event) override;
     
 private:
     Sprite *spriteWithColor(Color4F color, float texWidth, float texHeight);
@@ -41,6 +43,7 @@ private:
     
     Terrain *_terrain;
     Hero *_hero;
+    bool _tapDown;
 };
 
 NS_APP_END

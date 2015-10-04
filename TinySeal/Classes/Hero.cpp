@@ -12,6 +12,9 @@ NS_APP_BEGIN
 
 using namespace cocos2d;
 
+Hero::Hero() : _awake {false}
+{}
+
 Hero *Hero::create()
 {
     Hero *node = new (std::nothrow) Hero();
@@ -49,6 +52,40 @@ void Hero::createBody()
     // set initial position
     Size winSize = Director::getInstance()->getWinSize();
     this->setPosition(Vec2 {0,  winSize.height / 2 + radius});
+}
+
+void Hero::wake()
+{
+    _awake = true;
+    auto body = this->getPhysicsBody();
+    body->setResting(false);
+    body->applyImpulse(Vec2 {1, 2}, body->getPosition());
+}
+
+void Hero::dive()
+{
+    auto body = this->getPhysicsBody();
+    body->applyImpulse(Vec2 {5, -50}, body->getPosition());
+
+}
+
+void Hero::limitVelocity()
+{
+    if (!_awake) return;
+    
+    const float minVelocityX = 5;
+    const float minVelocityY = -40;
+    
+    auto body = this->getPhysicsBody();
+    Vec2 vel = body->getVelocity();
+    if (vel.x < minVelocityX) {
+        vel.x = minVelocityX;
+    }
+    if (vel.y < minVelocityY) {
+        vel.y = minVelocityY;
+    }
+    body->setVelocity(vel);
+
 }
 
 NS_APP_END
