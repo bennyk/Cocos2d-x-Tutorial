@@ -10,6 +10,8 @@
 #define Terrain_h
 
 #include "cocos2d.h"
+#include "Box2D/Box2D.h"
+#include "GLES-Render.h"
 
 #define kMaxHillKeyPoints 1000
 #define kHillSegmentWidth 5
@@ -24,8 +26,10 @@ class Terrain : public DrawNode
 {
 public:
     static Terrain* create();
+    static Terrain* createWithWorld(b2World *world);
     
     Terrain();
+    Terrain(b2World *world);
     virtual ~Terrain();
     
     virtual bool init() override;
@@ -50,6 +54,7 @@ private:
     Sprite *_stripes;
     
     CustomCommand _customCommand;
+    CustomCommand _debugDrawCommand;
     
     int _fromKeyPointI, _toKeyPointI;
     
@@ -60,6 +65,10 @@ private:
     Vec2 _borderVertices[kMaxBorderVertices];
     
     SpriteBatchNode *_batchNode;
+    
+    b2World *_world;
+    b2Body *_body;
+    GLESDebugDraw * _debugDraw;
 };
     
 NS_APP_END

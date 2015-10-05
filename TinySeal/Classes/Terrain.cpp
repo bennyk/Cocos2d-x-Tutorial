@@ -8,13 +8,18 @@
 
 #include "Terrain.h"
 
+#include "GLES-Render.h"
+
 
 NS_APP_BEGIN
 
 using namespace cocos2d;
 
 Terrain::Terrain()
-: _offsetX {0}, _stripes {nullptr}, _fromKeyPointI {0}, _toKeyPointI {0} {}
+: _offsetX {0}, _stripes {nullptr}, _fromKeyPointI {0}, _toKeyPointI {0} , _world {nullptr} {}
+
+Terrain::Terrain(b2World *world)
+: _offsetX {0}, _stripes {nullptr}, _fromKeyPointI {0}, _toKeyPointI {0}, _world {world} {}
 
 Terrain::~Terrain()
 {
@@ -38,9 +43,30 @@ Terrain *Terrain::create()
     return node;
 }
 
+Terrain *Terrain::createWithWorld(b2World *world)
+{
+    Terrain *node = new (std::nothrow) Terrain(world);
+    if (node)
+    {
+        node->init();
+        node->autorelease();
+    }
+    else
+    {
+        CC_SAFE_DELETE(node);
+    }
+    return node;
+}
+
 bool Terrain::init()
 {
     DrawNode::init();
+    
+    if (_world != nullptr) {
+        _debugDraw = new GLESDebugDraw(PTM_RATIO);
+        _world->SetDebugDraw(_debugDraw);
+        _debugDraw->SetFlags(GLESDebugDraw::e_shapeBit | GLESDebugDraw::e_jointBit);
+    }
     
     // we're going to use texture in this node.
     setGLProgramState(GLProgramState::getOrCreateWithGLProgramName(GLProgram::SHADER_NAME_POSITION_TEXTURE));
@@ -179,10 +205,16 @@ void Terrain::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, 
         glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_TEX_COORD, 2, GL_FLOAT, GL_FALSE, 0, _hillTexCoords);
         
         glDrawArrays(GL_TRIANGLE_STRIP, 0, (GLsizei)_nHillVertices);
-        
     };
     renderer->addCommand(&_customCommand);
     
+    _debugDrawCommand.init(_globalZOrder);
+    _debugDrawCommand.func = [this, transform]() {
+        _world->DrawDebugData();
+    };
+    renderer->addCommand(&_debugDrawCommand);
+    
+    /*
     for(int i = MAX(_fromKeyPointI, 1); i <= _toKeyPointI; ++i) {
         this->drawLine(_hillKeyPoints[i-1], _hillKeyPoints[i], Color4F {1.0, 0.0, 0.0, 1.0});
         
@@ -205,6 +237,7 @@ void Terrain::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, 
             pt0 = pt1;
         }
     }
+     */
     
     DrawNode::draw(renderer, transform, flags);
 }
@@ -213,17 +246,31 @@ void Terrain::setOffsetX(float newOffsetX)
 {
     Size winSize = Director::getInstance()->getWinSize();
     _offsetX = newOffsetX;
-    this->setPosition(winSize.width/8 -_offsetX* this->getScale(), 0);
+    this->setPosition(winSize.width/8 -_offsetX * this->getScale(), 0);
     this->resetHillVertices();
 }
 
 void Terrain::resetPhysics()
 {
-    auto body = PhysicsBody::createEdgeChain(_borderVertices, _nBorderVertices);
-    auto edgeNode = Node::create();
-    edgeNode->setPhysicsBody(body);
+    if(_body) {
+        _world->DestroyBody(_body);
+    }
     
-    this->addChild(edgeNode);
+    b2BodyDef bd;
+    bd.position.Set(0, 0);
+    
+    _body = _world->CreateBody(&bd);
+    
+    b2EdgeShape shape;
+    
+    Size winSize = Director::getInstance()->getWinSize();
+    b2Vec2 p1, p2;
+    for (int i=0; i<_nBorderVertices-1; i++) {
+        p1 = b2Vec2((_borderVertices[i].x /*+ winSize.width/8*/) /PTM_RATIO,_borderVertices[i].y/PTM_RATIO);
+        p2 = b2Vec2((_borderVertices[i+1].x /*+ winSize.width/8*/) /PTM_RATIO,_borderVertices[i+1].y/PTM_RATIO);
+        shape.Set(p1, p2);
+        _body->CreateFixture(&shape, 0);
+    }
 }
 
 

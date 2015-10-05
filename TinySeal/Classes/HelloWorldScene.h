@@ -5,6 +5,8 @@
 #include "Terrain.h"
 #include "Hero.h"
 
+#include "Box2D/Box2D.h"
+
 NS_APP_BEGIN
 
 using namespace cocos2d;
@@ -32,6 +34,7 @@ private:
     Sprite *spriteWithColor(Color4F color, float texWidth, float texHeight);
     Sprite *spriteWithColor1(Color4F color1, Color4F color2, float texWidth, float texHeight, int nStripes);
     void createTestBodyAtPostition(Vec2 position);
+    void setupWorld();
     
     Color4F randomBrightColor();
     void genBackground();
@@ -44,6 +47,8 @@ private:
     Terrain *_terrain;
     Hero *_hero;
     bool _tapDown;
+    
+    b2World * _world;
 };
 
 NS_APP_END

@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include "cocos2d.h"
+#include "Box2D/Box2D.h"
 
 NS_APP_BEGIN
 
@@ -18,9 +19,11 @@ using namespace cocos2d;
 class Hero : public Sprite {
 public:
     Hero();
+    Hero(b2World *world);
     
 public:
     static Hero* create();
+    static Hero *createWithWorld(b2World *world);
     virtual bool init() override;
     
     bool isAwake() { return _awake; }
@@ -28,11 +31,16 @@ public:
     void dive();
     void limitVelocity();
     
+    void update();
+    
 private:
     void createBody();
     
 private:
     bool _awake;
+    
+    b2World *_world;
+    b2Body *_body;
 };
 
 NS_APP_END

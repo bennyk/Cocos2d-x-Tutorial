@@ -11,6 +11,7 @@
 		1971EB361BBE89F000F663C6 /* Noise-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 1971EB331BBE89F000F663C6 /* Noise-hd.png */; settings = {ASSET_TAGS = (); }; };
 		1971EB371BBE89F000F663C6 /* Noise-iphone5hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 1971EB341BBE89F000F663C6 /* Noise-iphone5hd.png */; settings = {ASSET_TAGS = (); }; };
 		1971EB381BBE89F000F663C6 /* Noise.png in Resources */ = {isa = PBXBuildFile; fileRef = 1971EB351BBE89F000F663C6 /* Noise.png */; settings = {ASSET_TAGS = (); }; };
+		1991127E1BC169AD00B676F4 /* GLES-Render.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1991127C1BC169AD00B676F4 /* GLES-Render.cpp */; settings = {ASSET_TAGS = (); }; };
 		19DE3DEF1BC0C8C800F79E2E /* Hero.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19DE3DED1BC0C8C800F79E2E /* Hero.cpp */; settings = {ASSET_TAGS = (); }; };
 		19DE3DFD1BC0CA1C00F79E2E /* seal1.png in Resources */ = {isa = PBXBuildFile; fileRef = 19DE3DF11BC0CA1C00F79E2E /* seal1.png */; settings = {ASSET_TAGS = (); }; };
 		19DE3DFE1BC0CA1C00F79E2E /* seal2.png in Resources */ = {isa = PBXBuildFile; fileRef = 19DE3DF21BC0CA1C00F79E2E /* seal2.png */; settings = {ASSET_TAGS = (); }; };
@@ -123,6 +124,8 @@
 		1971EB331BBE89F000F663C6 /* Noise-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Noise-hd.png"; sourceTree = "<group>"; };
 		1971EB341BBE89F000F663C6 /* Noise-iphone5hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Noise-iphone5hd.png"; sourceTree = "<group>"; };
 		1971EB351BBE89F000F663C6 /* Noise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Noise.png; sourceTree = "<group>"; };
+		1991127C1BC169AD00B676F4 /* GLES-Render.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "GLES-Render.cpp"; sourceTree = "<group>"; };
+		1991127D1BC169AD00B676F4 /* GLES-Render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GLES-Render.h"; sourceTree = "<group>"; };
 		19DE3DED1BC0C8C800F79E2E /* Hero.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hero.cpp; sourceTree = "<group>"; };
 		19DE3DEE1BC0C8C800F79E2E /* Hero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hero.h; sourceTree = "<group>"; };
 		19DE3DF11BC0CA1C00F79E2E /* seal1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = seal1.png; sourceTree = "<group>"; };
@@ -366,6 +369,8 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				1991127C1BC169AD00B676F4 /* GLES-Render.cpp */,
+				1991127D1BC169AD00B676F4 /* GLES-Render.h */,
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
 				46880B8619C43A87006E1F66 /* HelloWorldScene.cpp */,
@@ -580,6 +585,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1991127E1BC169AD00B676F4 /* GLES-Render.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
