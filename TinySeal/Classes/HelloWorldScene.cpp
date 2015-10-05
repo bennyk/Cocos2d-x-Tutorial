@@ -1,8 +1,12 @@
 #include "HelloWorldScene.h"
 
+#include "SimpleAudioEngine.h"
+
 NS_APP_BEGIN
 
 USING_NS_CC;
+
+using namespace CocosDenshion;
 
 Scene* HelloWorld::createScene()
 {
@@ -320,6 +324,8 @@ void HelloWorld::onEnter()
     
     _hero = Hero::createWithWorld(_world);
     _terrain->addChild(_hero);
+    
+//    SimpleAudioEngine::getInstance()->playBackgroundMusic("TinySeal.caf", true);
 }
 
 void HelloWorld::update(float delta)
@@ -335,6 +341,7 @@ void HelloWorld::update(float delta)
     }
     else {
 //        CCLOG("not diving");
+        _hero->nodive();
     }
     
     _hero->limitVelocity();
@@ -382,17 +389,23 @@ bool HelloWorld::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_even
 //    Vec2 location = _terrain->convertTouchToNodeSpace(touch);
 //    this->createTestBodyAtPostition(location);
     
+    _hero->runForceAnimation();
+    
     return true;
 }
 
 void HelloWorld::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_event)
 {
     _tapDown = false;
+    
+    _hero->runNormalAnimation();
 }
 
 void HelloWorld::onTouchCancelled(cocos2d::Touch *touch, cocos2d::Event *unused_event)
 {
     _tapDown = false;
+    
+    _hero->runNormalAnimation();
 }
 
 void HelloWorld::menuCloseCallback(Ref* pSender)

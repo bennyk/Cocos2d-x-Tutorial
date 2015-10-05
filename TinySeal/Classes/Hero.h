@@ -22,6 +22,7 @@ class Hero : public Sprite {
 public:
     Hero();
     Hero(b2World *world);
+    virtual ~Hero();
     
 public:
     static Hero* create();
@@ -35,6 +36,10 @@ public:
     
     void update();
     
+    void nodive();
+    void runForceAnimation();
+    void runNormalAnimation();
+    
 private:
     void createBody();
     
@@ -46,6 +51,9 @@ private:
     
     b2Vec2 _prevVels[NUM_PREV_VELS];
     int _nextVel;
+    
+    Animation *_normalAnim;
+    Action *_normalAnimate;
 };
 
 NS_APP_END

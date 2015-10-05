@@ -12,11 +12,17 @@ NS_APP_BEGIN
 
 using namespace cocos2d;
 
-Hero::Hero() : _awake {false}, _world {nullptr}, _nextVel {0}
+Hero::Hero() : _awake {false}, _world {nullptr}, _nextVel {0}, _normalAnim(nullptr), _normalAnimate(nullptr)
 {}
 
-Hero::Hero(b2World *world) : _awake {false}, _world {world}, _nextVel {0}
+Hero::Hero(b2World *world) : _awake {false}, _world {world}, _nextVel {0}, _normalAnim(nullptr), _normalAnimate(nullptr)
 {}
+
+Hero::~Hero()
+{
+    CC_SAFE_RELEASE_NULL(_normalAnim);
+    CC_SAFE_RELEASE_NULL(_normalAnimate);
+}
 
 Hero *Hero::create()
 {
@@ -53,6 +59,13 @@ bool Hero::init()
     if (Sprite::initWithSpriteFrameName("seal1.png")) {
         
         this->createBody();
+
+        _normalAnim = Animation::create();
+        _normalAnim->addSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("seal1.png") );
+        _normalAnim->addSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("seal2.png") );
+        _normalAnim->setDelayPerUnit(.1f);
+        _normalAnim->retain();
+
         return true;
     }
     
@@ -136,5 +149,28 @@ void Hero::update()
     }
 }
 
+void Hero::runNormalAnimation()
+{
+    if (_normalAnimate != nullptr || !_awake) return;
+    _normalAnimate = RepeatForever::create(Animate::create(_normalAnim));
+    _normalAnimate->retain();
+    this->runAction(_normalAnimate);
+}
+
+void Hero::runForceAnimation()
+{
+    if (_normalAnimate != nullptr) {
+        _normalAnimate->stop();
+        CC_SAFE_RELEASE_NULL(_normalAnimate);
+    }
+//    this->setDisplayFrameWithAnimationName("seal_downhill.png", 0);
+    this->stopAllActions();
+    this->setSpriteFrame("seal_downhill.png");
+}
+
+void Hero::nodive()
+{
+    this->runNormalAnimation();
+}
 
 NS_APP_END
