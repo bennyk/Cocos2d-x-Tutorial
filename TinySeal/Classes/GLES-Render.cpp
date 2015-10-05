@@ -26,14 +26,14 @@
 
 USING_NS_CC;
 
-GLESDebugDraw::GLESDebugDraw()
-    : mRatio( 1.0f )
+GLESDebugDraw::GLESDebugDraw(DrawNode *drawNode)
+: mRatio( 1.0f ), mDrawNode(drawNode)
 {
     this->initShader();
 }
 
-GLESDebugDraw::GLESDebugDraw( float32 ratio )
-    : mRatio( ratio )
+GLESDebugDraw::GLESDebugDraw(DrawNode *drawNode, float32 ratio )
+    : mRatio( ratio ), mDrawNode(drawNode)
 {
     this->initShader();
 }
@@ -47,6 +47,17 @@ void GLESDebugDraw::initShader( void )
 
 void GLESDebugDraw::DrawPolygon(const b2Vec2* old_vertices, int vertexCount, const b2Color& color)
 {
+    Vec2 *vertices = new Vec2 [vertexCount];
+    for( int i=0;i<vertexCount;i++) {
+        vertices[i] = Vec2 {old_vertices[i].x, old_vertices[i].y};
+        vertices[i] *= mRatio;
+    }
+    
+    mDrawNode->drawPoly(vertices, vertexCount, true, Color4F {color.r, color.g, color.b, 1});
+    
+    delete[] vertices;
+
+    /*
     mShaderProgram->use();
     mShaderProgram->setUniformsForBuiltins();
 
@@ -68,10 +79,22 @@ void GLESDebugDraw::DrawPolygon(const b2Vec2* old_vertices, int vertexCount, con
     CHECK_GL_ERROR_DEBUG();
 
     delete[] vertices;
+     */
 }
 
 void GLESDebugDraw::DrawSolidPolygon(const b2Vec2* old_vertices, int vertexCount, const b2Color& color)
 {
+    Vec2 *vertices = new Vec2 [vertexCount];
+    for( int i=0;i<vertexCount;i++) {
+        vertices[i] = Vec2 {old_vertices[i].x, old_vertices[i].y};
+        vertices[i] *= mRatio;
+    }
+
+    mDrawNode->drawPolygon(vertices, vertexCount, Color4F {color.r*0.5f, color.g*0.5f, color.b*0.5f, 0.5f}, 1.0, Color4F {color.r, color.g, color.b, 1});
+    
+    delete[] vertices;
+    
+    /*
     mShaderProgram->use();
     mShaderProgram->setUniformsForBuiltins();
 
@@ -95,10 +118,14 @@ void GLESDebugDraw::DrawSolidPolygon(const b2Vec2* old_vertices, int vertexCount
     CHECK_GL_ERROR_DEBUG();
 
     delete[] vertices;
+     */
 }
 
 void GLESDebugDraw::DrawCircle(const b2Vec2& center, float32 radius, const b2Color& color)
 {
+    mDrawNode->drawCircle(Vec2{center.x * mRatio, center.y * mRatio}, radius * mRatio,  2.0f * b2_pi, 16, true, Color4F {color.r, color.g, color.b, 1.0});
+    
+    /*
     mShaderProgram->use();
     mShaderProgram->setUniformsForBuiltins();
 
@@ -126,10 +153,14 @@ void GLESDebugDraw::DrawCircle(const b2Vec2& center, float32 radius, const b2Col
     CHECK_GL_ERROR_DEBUG();
 
     delete[] glVertices;
+     */
 }
 
 void GLESDebugDraw::DrawSolidCircle(const b2Vec2& center, float32 radius, const b2Vec2& axis, const b2Color& color)
 {
+    mDrawNode->drawCircle(Vec2{center.x * mRatio, center.y * mRatio}, radius * mRatio,  2.0f * b2_pi, 16, true, Color4F {color.r, color.g, color.b, 1.0});
+    
+    /*
     mShaderProgram->use();
     mShaderProgram->setUniformsForBuiltins();
 
@@ -163,10 +194,13 @@ void GLESDebugDraw::DrawSolidCircle(const b2Vec2& center, float32 radius, const 
     CHECK_GL_ERROR_DEBUG();
 
     delete[] glVertices;
+     */
 }
 
 void GLESDebugDraw::DrawSegment(const b2Vec2& p1, const b2Vec2& p2, const b2Color& color)
 {
+    mDrawNode->drawLine(Vec2 {p1.x, p1.y} * mRatio, Vec2 {p2.x, p2.y} * mRatio, Color4F {color.r, color.g, color.b, 1.0});
+    /*
     mShaderProgram->use();
     mShaderProgram->setUniformsForBuiltins();
 
@@ -184,6 +218,7 @@ void GLESDebugDraw::DrawSegment(const b2Vec2& p1, const b2Vec2& p2, const b2Colo
     CC_INCREMENT_GL_DRAWN_BATCHES_AND_VERTICES(1,2);
 
     CHECK_GL_ERROR_DEBUG();
+     */
 }
 
 void GLESDebugDraw::DrawTransform(const b2Transform& xf)
@@ -199,6 +234,9 @@ void GLESDebugDraw::DrawTransform(const b2Transform& xf)
 
 void GLESDebugDraw::DrawPoint(const b2Vec2& p, float32 size, const b2Color& color)
 {
+    mDrawNode->drawPoint(Vec2 {p.x * mRatio, p.y * mRatio}, size, Color4F {color.r, color.g, color.b, 1.0});
+    
+    /*
     mShaderProgram->use();
     mShaderProgram->setUniformsForBuiltins();
 
@@ -218,6 +256,7 @@ void GLESDebugDraw::DrawPoint(const b2Vec2& p, float32 size, const b2Color& colo
     CC_INCREMENT_GL_DRAWN_BATCHES_AND_VERTICES(1,1);
 
     CHECK_GL_ERROR_DEBUG();
+     */
 }
 
 void GLESDebugDraw::DrawString(int x, int y, const char *string, ...)
@@ -229,6 +268,16 @@ void GLESDebugDraw::DrawString(int x, int y, const char *string, ...)
 
 void GLESDebugDraw::DrawAABB(b2AABB* aabb, const b2Color& color)
 {
+    Vec2 vertices[] = {
+        Vec2 {aabb->lowerBound.x * mRatio, aabb->lowerBound.y * mRatio},
+        Vec2 {aabb->upperBound.x * mRatio, aabb->lowerBound.y * mRatio},
+        Vec2 {aabb->upperBound.x * mRatio, aabb->upperBound.y * mRatio},
+        Vec2 {aabb->lowerBound.x * mRatio, aabb->upperBound.y * mRatio}
+    };
+    
+    mDrawNode->drawPoly(vertices, 4, true, Color4F {color.r, color.g, color.b, 1});
+    
+    /*
     mShaderProgram->use();
     mShaderProgram->setUniformsForBuiltins();
 
@@ -247,4 +296,5 @@ void GLESDebugDraw::DrawAABB(b2AABB* aabb, const b2Color& color)
     CC_INCREMENT_GL_DRAWN_BATCHES_AND_VERTICES(1,4);
 
     CHECK_GL_ERROR_DEBUG();
+     */
 }

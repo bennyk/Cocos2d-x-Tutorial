@@ -63,7 +63,7 @@ bool Terrain::init()
     DrawNode::init();
     
     if (_world != nullptr) {
-        _debugDraw = new GLESDebugDraw(PTM_RATIO);
+        _debugDraw = new GLESDebugDraw(this, PTM_RATIO);
         _world->SetDebugDraw(_debugDraw);
         _debugDraw->SetFlags(GLESDebugDraw::e_shapeBit | GLESDebugDraw::e_jointBit);
     }
@@ -208,13 +208,8 @@ void Terrain::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, 
     };
     renderer->addCommand(&_customCommand);
     
-    _debugDrawCommand.init(_globalZOrder);
-    _debugDrawCommand.func = [this, transform]() {
-        _world->DrawDebugData();
-    };
-    renderer->addCommand(&_debugDrawCommand);
-    
     /*
+    // draw outlines of key points and hill segments.
     for(int i = MAX(_fromKeyPointI, 1); i <= _toKeyPointI; ++i) {
         this->drawLine(_hillKeyPoints[i-1], _hillKeyPoints[i], Color4F {1.0, 0.0, 0.0, 1.0});
         
@@ -238,6 +233,8 @@ void Terrain::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, 
         }
     }
      */
+    
+    _world->DrawDebugData();
     
     DrawNode::draw(renderer, transform, flags);
 }

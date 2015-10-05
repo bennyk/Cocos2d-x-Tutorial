@@ -31,14 +31,15 @@ struct b2AABB;
 class GLESDebugDraw : public b2Draw
 {
     float32 mRatio;
+    cocos2d::DrawNode *mDrawNode;
     cocos2d::GLProgram* mShaderProgram;
     GLint        mColorLocation;
 
     void initShader( void );
 public:
-    GLESDebugDraw();
+    GLESDebugDraw(cocos2d::DrawNode *drawNode);
 
-    GLESDebugDraw( float32 ratio );
+    GLESDebugDraw(cocos2d::DrawNode *drawNode, float32 ratio );
 
     virtual void DrawPolygon(const b2Vec2* vertices, int vertexCount, const b2Color& color);
 

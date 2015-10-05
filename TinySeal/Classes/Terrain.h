@@ -54,7 +54,6 @@ private:
     Sprite *_stripes;
     
     CustomCommand _customCommand;
-    CustomCommand _debugDrawCommand;
     
     int _fromKeyPointI, _toKeyPointI;
     
