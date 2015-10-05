@@ -1,6 +1,6 @@
 # Cocos2d-x-Tutorial
 
-This repo hosts my tutorial source based on the newer cocos2d-x v3 framework (see References below for related docs about this tutorial).
+This repo contains port of popular tutorial projects (see References) to cocos2d-x v3 framework.
 
 Following are the instructions required to build these tutorial samples: -
 
