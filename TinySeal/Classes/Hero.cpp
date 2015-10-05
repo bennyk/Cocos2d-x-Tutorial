@@ -12,10 +12,10 @@ NS_APP_BEGIN
 
 using namespace cocos2d;
 
-Hero::Hero() : _awake {false}, _world {nullptr}
+Hero::Hero() : _awake {false}, _world {nullptr}, _nextVel {0}
 {}
 
-Hero::Hero(b2World *world) : _awake {false}, _world {world}
+Hero::Hero(b2World *world) : _awake {false}, _world {world}, _nextVel {0}
 {}
 
 Hero *Hero::create()
@@ -120,7 +120,15 @@ void Hero::update()
 {
     this->setPosition(Vec2 {static_cast<float>(_body->GetPosition().x*PTM_RATIO), static_cast<float>(_body->GetPosition().y*PTM_RATIO)});
     b2Vec2 vel = _body->GetLinearVelocity();
-//    b2Vec2 weightedVel = vel;
+    b2Vec2 weightedVel = vel;
+    
+    for(int i = 0; i < NUM_PREV_VELS; ++i) {
+        weightedVel += _prevVels[i];
+    }
+    weightedVel = b2Vec2(weightedVel.x/NUM_PREV_VELS, weightedVel.y/NUM_PREV_VELS);
+    _prevVels[_nextVel++] = vel;
+    if (_nextVel >= NUM_PREV_VELS) _nextVel = 0;
+    
     Vec2 v = Vec2 {vel.x, vel.y};
     float angle = v.getAngle();
     if (_awake) {

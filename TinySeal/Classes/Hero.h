@@ -13,6 +13,8 @@
 #include "cocos2d.h"
 #include "Box2D/Box2D.h"
 
+#define NUM_PREV_VELS   5
+
 NS_APP_BEGIN
 
 using namespace cocos2d;
@@ -41,6 +43,9 @@ private:
     
     b2World *_world;
     b2Body *_body;
+    
+    b2Vec2 _prevVels[NUM_PREV_VELS];
+    int _nextVel;
 };
 
 NS_APP_END
