@@ -359,6 +359,12 @@ void HelloWorld::update(float delta)
     }
     
     _hero->update();
+    
+    Size winSize = Director::getInstance()->getWinSize();
+    float scale = (winSize.height*3/4) / _hero->getPosition().y;
+    if (scale > 1) scale = 1;
+    _terrain->setScale(scale);
+
     float offset = _hero->getPosition().x;
     
     Size textureSize = _background->getTextureRect().size;
