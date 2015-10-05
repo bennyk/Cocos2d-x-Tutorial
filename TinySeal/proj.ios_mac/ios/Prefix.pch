@@ -15,4 +15,6 @@
 #define NS_APP_END }
 #define USING_NS_APP using namespace app
 
+#define PTM_RATIO   32.0
+
 #endif
