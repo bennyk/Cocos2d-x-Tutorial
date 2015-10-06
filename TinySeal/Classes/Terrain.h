@@ -15,7 +15,7 @@
 #include "App.h"
 
 #define kMaxHillKeyPoints 1000
-#define kHillSegmentWidth 10
+#define kHillSegmentWidth 5
 
 #define kMaxHillVertices 4000
 #define kMaxBorderVertices 800
