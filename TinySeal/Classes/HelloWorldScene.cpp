@@ -276,7 +276,7 @@ Color4F HelloWorld::randomBrightColor()
         if (randomColor.r > requiredBrightness ||
             randomColor.g > requiredBrightness ||
             randomColor.b > requiredBrightness) {
-            return Color4F::Color4F(randomColor);
+            return Color4F(randomColor);
         }
     }
 
@@ -325,7 +325,11 @@ void HelloWorld::onEnter()
     _hero = Hero::createWithWorld(_world);
     _terrain->addChild(_hero);
     
-//    SimpleAudioEngine::getInstance()->playBackgroundMusic("TinySeal.caf", true);
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+    SimpleAudioEngine::getInstance()->playBackgroundMusic("TinySeal.caf", true);
+#else
+    SimpleAudioEngine::getInstance()->playBackgroundMusic("TinySeal.mp3", true);
+#endif
 }
 
 void HelloWorld::update(float delta)
