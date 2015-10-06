@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "cocos2d.h"
 #include "Box2D/Box2D.h"
+#include "App.h"
 
 #define NUM_PREV_VELS   5
 

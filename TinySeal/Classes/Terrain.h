@@ -12,6 +12,7 @@
 #include "cocos2d.h"
 #include "Box2D/Box2D.h"
 #include "GLES-Render.h"
+#include "App.h"
 
 #define kMaxHillKeyPoints 1000
 #define kHillSegmentWidth 5

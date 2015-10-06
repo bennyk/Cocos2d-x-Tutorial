@@ -121,6 +121,7 @@
 /* Begin PBXFileReference section */
 		1914DEAC1BBE6B0F00DD29B0 /* Terrain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Terrain.cpp; sourceTree = "<group>"; };
 		1914DEAD1BBE6B0F00DD29B0 /* Terrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Terrain.h; sourceTree = "<group>"; };
+		19255EC51BC2941F00FB3486 /* App.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = App.h; sourceTree = "<group>"; };
 		1971EB331BBE89F000F663C6 /* Noise-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Noise-hd.png"; sourceTree = "<group>"; };
 		1971EB341BBE89F000F663C6 /* Noise-iphone5hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Noise-iphone5hd.png"; sourceTree = "<group>"; };
 		1971EB351BBE89F000F663C6 /* Noise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Noise.png; sourceTree = "<group>"; };
@@ -379,6 +380,7 @@
 				1914DEAD1BBE6B0F00DD29B0 /* Terrain.h */,
 				19DE3DED1BC0C8C800F79E2E /* Hero.cpp */,
 				19DE3DEE1BC0C8C800F79E2E /* Hero.h */,
+				19255EC51BC2941F00FB3486 /* App.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -628,6 +630,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
+				ENABLE_BITCODE = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -664,6 +667,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
+				ENABLE_BITCODE = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ios/Prefix.pch;

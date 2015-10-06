@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "Terrain.h"
 #include "Hero.h"
+#include "App.h"
 
 #include "Box2D/Box2D.h"
 
